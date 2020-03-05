@@ -13,30 +13,36 @@ namespace Dyreklinik
     {
         static void Main(string[] args)
         {
-           // OpretPostnummer();
-           //OpdaterPostnummer();
-           // DeletePostnummer();
-              //OpretKunde();
-         //    UpdateKunde();
+            // OpretPostnummer();
+            //OpdaterPostnummer();
+            // DeletePostnummer();
+            //OpretKunde();
+            //    UpdateKunde();
             //  DeleteKunde();
-           //  OpretArt();
+            //  OpretArt();
             // UpdateArt();
             //  DeleteArt();
-          //  OpretKøn();
+            //  OpretKøn();
             //  UpdateKøn();
             // DeleteKøn();
-           //   OpretDyr();
+            //   OpretDyr();
             //   OpdaterDyr();
             //  DeleteDyr();
-           // OpretBehandling();
+            // OpretBehandling();
             // OpdaterBehandling();
             // DeleteBehandling();
-          //  OpretBehandlingType();
-                 UpdateBehandlingType();
+            //  OpretBehandlingType();
+            //   UpdateBehandlingType();
             // DeleteBehandlingType();
-           //   OpretBehandlingBehandlingstype();
-         //   UpdateBehandlingBehandlingstype();
+            //   OpretBehandlingBehandlingstype();
+            //   UpdateBehandlingBehandlingstype();
+            faktura();
             Console.ReadLine();
+        }
+        static void faktura()
+        {
+            Faktura nyFaktura = new Faktura(Con());
+            nyFaktura.PrintFaktura("benny@email.dk", "2019-07-01");
         }
         static void DeleteBehandlingBehandlingstype()
         {

@@ -15,12 +15,12 @@ namespace Dyreklinik
             con = c;
         }
         private SqlConnection con;
-        public void PrintFaktura(string dato)
+        public void PrintFaktura(string mail, string dato)
         {
             string selectKundeQuery = "SELECT Kunder.Id, Kunder.Navn AS Kundenavn, Vej, " +
                 "Kunder.Postnummer, PostNummer.Bynavn FROM Kunder " +
                 "INNER JOIN PostNummer ON PostNummer.Postnummer = Kunder.Postnummer " +
-                "WHERE Kunder.Email = 'benny@email.dk';";
+                "WHERE Kunder.Email = '" + mail + "';";
             SqlCommand SelectKundeCmd = new SqlCommand(selectKundeQuery);
             SelectKundeCmd.Connection = con;
             con.Open();
