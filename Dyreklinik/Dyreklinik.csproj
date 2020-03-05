@@ -74,6 +74,7 @@
     <Compile Include="BehandlingsType.cs" />
     <Compile Include="DataBind.cs" />
     <Compile Include="Dyr.cs" />
+    <Compile Include="Faktura.cs" />
     <Compile Include="KolonneSelektor.cs" />
     <Compile Include="Kunder.cs" />
     <Compile Include="Køn.cs" />
