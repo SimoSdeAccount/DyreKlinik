@@ -71,6 +71,7 @@
     <Compile Include="Art.cs" />
     <Compile Include="Behandling.cs" />
     <Compile Include="BehandlingBehandlingstype.cs" />
+    <Compile Include="BehandlingsHistorik.cs" />
     <Compile Include="BehandlingsType.cs" />
     <Compile Include="DataBind.cs" />
     <Compile Include="Dyr.cs" />

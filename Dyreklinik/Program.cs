@@ -36,8 +36,14 @@ namespace Dyreklinik
             // DeleteBehandlingType();
             //   OpretBehandlingBehandlingstype();
             //   UpdateBehandlingBehandlingstype();
-            faktura();
+            // faktura();
+            PrintBehandlingsHistorik();
             Console.ReadLine();
+        }
+        static void PrintBehandlingsHistorik()
+        {
+            BehandlingsHistorik printHistorik = new BehandlingsHistorik(Con());
+            printHistorik.printBehandlingsHistorik();
         }
         static void faktura()
         {
