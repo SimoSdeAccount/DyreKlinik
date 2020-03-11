@@ -34,13 +34,13 @@ namespace Dyreklinik
             DataBind insertBind = new DataBind(con);
             return insertBind.Insert("BehandlingsType", Kolonner, getSetters, "Behandlingtype");
         }
-        public void Update(List<string> kolonner, string behandlingsType = null)
+        public void Update(List<string> updateKolonner, string behandlingsType = null)
         {
-            List<string> Kolonner = new List<string> {"Behandlingtype", "Pris" };
-            List<string> UpdateKolonner = GetUpdateKolonner(kolonner, Kolonner);
-            List<object> UpdateGetSetters = GetUpdateGetSetters(kolonner, Kolonner, new List<object> {behandlingsType, GetSetPris });
+            List<string> muligeKolonner = new List<string> {"Behandlingtype", "Pris" };
+            List<string> validUpdateKolonner = GetUpdateKolonner(updateKolonner, muligeKolonner);
+            List<object> validUpdateVærdier = GetUpdateVærdier(validUpdateKolonner, muligeKolonner, new List<object> {behandlingsType, GetSetPris });
             DataBind updateBind = new DataBind(con);
-            updateBind.Update("BehandlingsType", UpdateKolonner, UpdateGetSetters, "Behandlingtype", GetSetBehandlingsType);
+            updateBind.Update("BehandlingsType", validUpdateKolonner, validUpdateVærdier, "Behandlingtype", GetSetBehandlingsType);
         }
         public void Delete()
         {

@@ -57,20 +57,17 @@ namespace Dyreklinik
             DataBind insertBind = new DataBind(con);
             return insertBind.Insert("Dyr", Kolonner, getSetters, "Id");
         }
-        public void update(List<string> kolonner)
+        public void update(List<string> updateKolonner)
         {
-            List<string> UpdateKolonner = GetUpdateKolonner(kolonner, Kolonner);
-            List<object> UpdateGetSetters = GetUpdateGetSetters(kolonner, Kolonner, new List<object> { GetSetNavn, GetSetAlder, GetSetEjerid, GetSetKønId, GetSetArtId });
+            List<string> validUpdateKolonner = GetUpdateKolonner(updateKolonner, Kolonner);
+            List<object> validUpdateVærdier = GetUpdateVærdier(validUpdateKolonner, Kolonner, new List<object> { GetSetNavn, GetSetAlder, GetSetEjerid, GetSetKønId, GetSetArtId });
             DataBind updateBind = new DataBind(con);
-            updateBind.Update("Dyr", UpdateKolonner, UpdateGetSetters, "Id", GetSetId.ToString());
+            updateBind.Update("Dyr", validUpdateKolonner, validUpdateVærdier, "Id", GetSetId.ToString());
         }
         public void delete()
         {
             DataBind deleteBind = new DataBind(con);
             deleteBind.Delete("Dyr", "Id", GetSetId.ToString());
-            /*Huskenote:
-             man skal egentlig kunne vælge hvilken kolonne man vil lave sin condition ud fra. Eventuelt ret med en parameter.
-             */
         }
     }
 }

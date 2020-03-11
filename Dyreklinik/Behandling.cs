@@ -49,7 +49,7 @@ namespace Dyreklinik
         public void Update(List<string> kolonner)
         {
             List<string> UpdateKolonner = GetUpdateKolonner(kolonner, Kolonner);
-            List<object> UpdateGetSetters = GetUpdateGetSetters(kolonner, Kolonner, new List<object> { GetSetDato, GetSetTid, GetSetDyrId });
+            List<object> UpdateGetSetters = GetUpdateVærdier(kolonner, Kolonner, new List<object> { GetSetDato, GetSetTid, GetSetDyrId });
             DataBind updateBind = new DataBind(con);
             updateBind.Update("Behandling", UpdateKolonner, UpdateGetSetters, "Id", GetSetId.ToString());
         }

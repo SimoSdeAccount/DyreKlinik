@@ -14,30 +14,31 @@ namespace Dyreklinik
         static void Main(string[] args)
         {
             // OpretPostnummer();
-            //OpdaterPostnummer();
+            // OpdaterPostnummer();
             // DeletePostnummer();
-            //OpretKunde();
-            //    UpdateKunde();
-            //  DeleteKunde();
-            //  OpretArt();
+            // OpretKunde();
+            // UpdateKunde();
+            // DeleteKunde();
+            // OpretArt();
             // UpdateArt();
-            //  DeleteArt();
-            //  OpretKøn();
-            //  UpdateKøn();
+            // DeleteArt();
+            // OpretKøn();
+            // UpdateKøn();
             // DeleteKøn();
-            //   OpretDyr();
-            //   OpdaterDyr();
-            //  DeleteDyr();
+            // OpretDyr();
+            // OpdaterDyr();
+            // DeleteDyr();
             // OpretBehandling();
             // OpdaterBehandling();
             // DeleteBehandling();
-            //  OpretBehandlingType();
-            //   UpdateBehandlingType();
+            // OpretBehandlingType();
+            // UpdateBehandlingType();
             // DeleteBehandlingType();
-            //   OpretBehandlingBehandlingstype();
-            //   UpdateBehandlingBehandlingstype();
+            // OpretBehandlingBehandlingstype();
+            // UpdateBehandlingBehandlingstype();
+            // DeleteBehandlingBehandlingstype();
             // faktura();
-            PrintBehandlingsHistorik();
+            // PrintBehandlingsHistorik();
             Console.ReadLine();
         }
         static void PrintBehandlingsHistorik()
@@ -53,22 +54,26 @@ namespace Dyreklinik
         static void DeleteBehandlingBehandlingstype()
         {
             BehandlingBehandlingstype deleteBehandlingBehandlingstype = new BehandlingBehandlingstype(Con());
-            //
+            //Man angiver hvilken sammensætning af behandlingid samt behandlingtype man vil overskrive, og indsætter den som argument
+            List<string> overskrivBetingelser = new List<string> { "5", "'Vaccination'" };
+            deleteBehandlingBehandlingstype.Delete(overskrivBetingelser);
         }
         static void UpdateBehandlingBehandlingstype()
         {
             BehandlingBehandlingstype updateBehandlingBehandlingstype = new BehandlingBehandlingstype(Con());
-            updateBehandlingBehandlingstype.GetSetBehandlingsType = "Øjenskyld";
-            List<string> derplist = new List<string> { "Behandlingtype" };
-            List<string> kagederp = new List<string> { "3", "'Årligttjek'" };
+            //Getsetteren giver værdien man vil ændre til
+            updateBehandlingBehandlingstype.GetSetBehandlingId = 4;
+            //Første argument er værdien man vil overskrive
+            List<string> derplist = new List<string> { "BehandlingId" };
+            //Andet argument i updatebehandlingbehandlingstype er den række man vil gå ind og overskrive.
+            List<string> kagederp = new List<string> { "3", "'Kastrering'" };
             updateBehandlingBehandlingstype.Update(derplist, kagederp);
-            //
         }
         static void OpretBehandlingBehandlingstype()
         {
             BehandlingBehandlingstype opretBehandlingBehandlingstype = new BehandlingBehandlingstype(Con());
-            opretBehandlingBehandlingstype.GetSetBehandlingId = 1;
-            opretBehandlingBehandlingstype.GetSetBehandlingsType = "ÅrligtTjek";
+            opretBehandlingBehandlingstype.GetSetBehandlingId = 5;
+            opretBehandlingBehandlingstype.GetSetBehandlingsType = "Vaccination";
             opretBehandlingBehandlingstype.Insert();
         }
         static void DeleteBehandlingType()
@@ -182,35 +187,36 @@ namespace Dyreklinik
         static void DeleteKunde()
         {
             Kunder deleteKunde = new Kunder(Con());
-            deleteKunde.GetSetId = 2;
+            deleteKunde.GetSetId = 1003;
             deleteKunde.Delete();
         }
         static void UpdateKunde()
         {
             Kunder updateKunde = new Kunder(Con());
-            updateKunde.GetSetNavn = "Karsten";
-            updateKunde.GetSetVej = "Karstenvej 2";
-            updateKunde.GetSetEmail = "Karsten@Email.dk";
-            updateKunde.GetSetId = 1;
+            updateKunde.GetSetNavn = "Sofie";
+            updateKunde.GetSetVej = "Sofievej 2";
+            updateKunde.GetSetEmail = "Sofie@email.dk";
+            updateKunde.GetSetId = 1004;
+            //Kolonner der skal opdateres sættes ind i kundens update funktion som argument
             List<string> kolonner = new List<string> { "Navn", "Vej", "email" };
             updateKunde.Update(kolonner);
         }
         static void OpretKunde()
         {
             Kunder nyKunde = new Kunder(Con());
-            nyKunde.GetSetNavn = "Matilde";
+            nyKunde.GetSetNavn = "Sofie";
             nyKunde.GetSetAlder = 22;
-            nyKunde.GetSetVej = "Matildevej 2";
+            nyKunde.GetSetVej = "Sofievej 2";
             nyKunde.GetSetTelefon = "11223344";
-            nyKunde.GetSetEmail = "Matilde@mail.dk";
-            nyKunde.GetSetPostNummer = "8700";
+            nyKunde.GetSetEmail = "sofie@mail.dk";
+            nyKunde.GetSetPostNummer = "8000";
             Console.WriteLine(nyKunde.Insert());
         }
         static void OpretPostnummer()
         {
             PostNummer PostNummer = new PostNummer(Con());
-            PostNummer.GetSetPostNummer = "8700";
-            PostNummer.GetSetBy = "Horsens";
+            PostNummer.GetSetPostNummer = "8000";
+            PostNummer.GetSetBy = "Århus";
             Console.WriteLine(PostNummer.Insert());
         }
         static void OpdaterPostnummer()

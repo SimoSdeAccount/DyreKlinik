@@ -21,7 +21,7 @@ namespace Dyreklinik
         private string telefon;
         private string email;
         private string postnummer;
-        private static List<string> Kolonner = new List<string> {"Navn", "Alder", "Vej", "Telefon", "email", "Postnummer" };
+        private static List<string> muligeKolonner = new List<string> {"Navn", "Alder", "Vej", "Telefon", "email", "Postnummer" };
         public int GetSetId
         {
             get { return id; }
@@ -61,14 +61,15 @@ namespace Dyreklinik
         {
             List<object> getSetters = new List<object> { GetSetNavn, GetSetAlder, GetSetVej, GetSetTelefon, GetSetEmail, GetSetPostNummer };
             DataBind insertBind = new DataBind(con);
-            return insertBind.Insert("Kunder", Kolonner, getSetters, "Id");
+            return insertBind.Insert("Kunder", muligeKolonner, getSetters, "Id");
         }
-        public void Update(List<string> kolonner)
+        public void Update(List<string> updateKolonner)
         {
-            List<string> UpdateKolonner = GetUpdateKolonner(kolonner, Kolonner);
-            List<object> UpdateGetSetters = GetUpdateGetSetters(kolonner, Kolonner, new List<object> { GetSetNavn, GetSetAlder, GetSetVej, GetSetTelefon, GetSetEmail, GetSetPostNummer });
+            List<object> muligeVærdier = new List<object> { GetSetNavn, GetSetAlder, GetSetVej, GetSetTelefon, GetSetEmail, GetSetPostNummer };
+            List<string> validUpdateKolonner = GetUpdateKolonner(updateKolonner, muligeKolonner);
+            List<object> validUpdateVærdier = GetUpdateVærdier(validUpdateKolonner, muligeKolonner, muligeVærdier);
             DataBind updateBind = new DataBind(con);
-            updateBind.Update("Kunder", UpdateKolonner, UpdateGetSetters, "Id", GetSetId.ToString());
+            updateBind.Update("Kunder", validUpdateKolonner, validUpdateVærdier, "Id", GetSetId.ToString());
         }
         public void Delete()
         {

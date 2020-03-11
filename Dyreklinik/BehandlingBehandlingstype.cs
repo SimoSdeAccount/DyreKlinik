@@ -17,7 +17,7 @@ namespace Dyreklinik
         private SqlConnection con;
         private int behandlingId;
         private string behandlingsType;
-        private static List<string> Kolonner = new List<string> { "BehandlingId", "Behandlingstype"};
+        private static List<string> muligeKolonner = new List<string> { "BehandlingId", "Behandlingstype"};
         public int GetSetBehandlingId
         {
             get { return behandlingId; }
@@ -32,19 +32,19 @@ namespace Dyreklinik
         {
             List<object> getSetters = new List<object> { GetSetBehandlingId, GetSetBehandlingsType};
             DataBind insertBind = new DataBind(con);
-            return insertBind.Insert("BehandlingBehandlingsType", Kolonner, getSetters, "BehandlingId");
+            return insertBind.Insert("BehandlingBehandlingsType", muligeKolonner, getSetters, "BehandlingId");
         }
-        public void Update(List<string> kolonner, List<string> betingelser)
+        public void Update(List<string> updateKolonner, List<string> betingelser)
         {
-            List<string> UpdateKolonner = GetUpdateKolonner(kolonner, Kolonner);
-            List<object> UpdateGetSetters = GetUpdateGetSetters(kolonner, Kolonner, new List<object> { GetSetBehandlingId, GetSetBehandlingsType });
+            List<string> validUpdateKolonner = GetUpdateKolonner(updateKolonner, muligeKolonner);
+            List<object> validUpdateVærdier = GetUpdateVærdier(validUpdateKolonner, muligeKolonner, new List<object> { GetSetBehandlingId, GetSetBehandlingsType });
             DataBind updateBind = new DataBind(con);
-            updateBind.Update("BehandlingBehandlingsType", UpdateKolonner, UpdateGetSetters, new List<string> {"BehandlingId", "Behandlingstype" }, betingelser);
+            updateBind.Update("BehandlingBehandlingsType", validUpdateKolonner, validUpdateVærdier, muligeKolonner, betingelser);
         }
-        public void Delete()
+        public void Delete(List<string> betingelser)
         {
             DataBind deleteBind = new DataBind(con);
-            deleteBind.Delete("BehandlingBehandlingsType", "BehandlingId", GetSetBehandlingId.ToString());
+            deleteBind.Delete("BehandlingBehandlingsType", muligeKolonner, betingelser);
         }
     }
 }
