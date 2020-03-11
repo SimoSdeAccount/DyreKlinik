@@ -17,14 +17,15 @@ namespace Dyreklinik
         }
         private SqlConnection con;
     
-        public void printBehandlingsHistorik()
+        public void printBehandlingsHistorik(string startDato, string slutDato)
         {
-            //DEr laves sql query der viser relevant data relateret til historik over behandling af dyr.
+            //Der laves sql query der viser relevant data relateret til historik over behandling af dyr.
             string selectHistorikQuery = "SELECT Dyr.Id, Dyr.Navn AS DyreNavn, Art.Navn AS ArtNavn, Dyr.Alder, Kunder.Navn AS KundeNavn, Behandling.Dato, BehandlingBehandlingsType.Behandlingstype FROM Dyr " +
                 "INNER JOIN Art ON Art.Id = Dyr.ArtId " +
                 "INNER JOIN Kunder ON Kunder.Id = Dyr.EjerId " +
                 "INNER JOIN Behandling ON Behandling.DyrId = Dyr.Id " +
-                "INNER JOIN BehandlingBehandlingsType ON BehandlingBehandlingsType.BehandlingId = Behandling.Id;";
+                "INNER JOIN BehandlingBehandlingsType ON BehandlingBehandlingsType.BehandlingId = Behandling.Id " +
+                "WHERE Behandling.Dato BETWEEN '" + startDato + "' AND '" + slutDato + "';";
             //Der laves et sqlcommand objekt som modtager ovenstående sql query i sin construktor, og forbindelsen sættes til at være den modtagede forbindelse med objekt instanciering
             SqlCommand SelectHistorikCmd = new SqlCommand(selectHistorikQuery);
             SelectHistorikCmd.Connection = con;

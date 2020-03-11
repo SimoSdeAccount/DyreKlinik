@@ -31,6 +31,10 @@ namespace Dyreklinik
                 string id = readArtDyrData["Id"].ToString();
                 string artNavn = readArtDyrData["Artnavn"].ToString();
                 string dyrNavn = readArtDyrData["Dyrnavn"].ToString();
+                if(dyrNavn == string.Empty)
+                {
+                    dyrNavn = "NULL";
+                }
                 Console.WriteLine("Art id: " + id + " Artnavn: " + artNavn + " Dyrnavn: " + dyrNavn);
             }
             //læsning stopper og forbindelsen lukkes

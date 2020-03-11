@@ -18,6 +18,7 @@ namespace Dyreklinik
         private SqlConnection con;
         public void PrintFaktura(string mail, string dato)
         {
+            int samletPris = 0; //Alle priserne på behandlinger summeres sammen i denne integer
             //Der laves et SQL query som tager fat i udvalgt kundeinformation, blandt andet id med henblik på at vælge dyr tilhørende kunde
             string selectKundeQuery = "SELECT Kunder.Id, Kunder.Navn AS Kundenavn, Vej, " +
                 "Kunder.Postnummer, PostNummer.Bynavn FROM Kunder " +
@@ -72,6 +73,7 @@ namespace Dyreklinik
                       " Behandlingtype: " + readDyrData["Behandlingstype"].ToString() +
                       " Pris: " + readDyrData["Pris"].ToString();
                 dyrData.Add(fakturaLine);
+                samletPris += int.Parse(readDyrData["Pris"].ToString());
             }
             //læsning stoppes og forbindelsen lukkes
             readDyrData.Close();
@@ -82,6 +84,8 @@ namespace Dyreklinik
             {
                 Console.WriteLine(dyrData[i]);
             }
+            Console.WriteLine("Samlet behandlings pris:");
+            Console.WriteLine(samletPris);
         }
     }
 }

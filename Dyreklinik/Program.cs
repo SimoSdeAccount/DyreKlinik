@@ -37,14 +37,21 @@ namespace Dyreklinik
             // OpretBehandlingBehandlingstype();
             // UpdateBehandlingBehandlingstype();
             // DeleteBehandlingBehandlingstype();
-            // faktura();
-            // PrintBehandlingsHistorik();
+          //   faktura();
+          //   PrintBehandlingsHistorik();
+            // printArtDyr();
             Console.ReadLine();
+        }
+        static void printArtDyr()
+        {
+            ArtDyr printArtDyr = new ArtDyr(Con());
+            printArtDyr.PrintArtDyr();
         }
         static void PrintBehandlingsHistorik()
         {
             BehandlingsHistorik printHistorik = new BehandlingsHistorik(Con());
-            printHistorik.printBehandlingsHistorik();
+            printHistorik.printBehandlingsHistorik("2018-11-03", "2019-07-01"); 
+            //andet interval 2016-10-05
         }
         static void faktura()
         {
@@ -187,29 +194,28 @@ namespace Dyreklinik
         static void DeleteKunde()
         {
             Kunder deleteKunde = new Kunder(Con());
-            deleteKunde.GetSetId = 1003;
+            deleteKunde.GetSetId = 2003;
             deleteKunde.Delete();
         }
         static void UpdateKunde()
         {
             Kunder updateKunde = new Kunder(Con());
-            updateKunde.GetSetNavn = "Sofie";
-            updateKunde.GetSetVej = "Sofievej 2";
-            updateKunde.GetSetEmail = "Sofie@email.dk";
-            updateKunde.GetSetId = 1004;
-            //Kolonner der skal opdateres sættes ind i kundens update funktion som argument
+            updateKunde.GetSetNavn = "Benjamin";
+            updateKunde.GetSetVej = "Benjaminvej 2";
+            updateKunde.GetSetEmail = "Benjamin@email.dk";
+            updateKunde.GetSetId = 2003;
             List<string> kolonner = new List<string> { "Navn", "Vej", "email" };
             updateKunde.Update(kolonner);
         }
         static void OpretKunde()
         {
             Kunder nyKunde = new Kunder(Con());
-            nyKunde.GetSetNavn = "Sofie";
-            nyKunde.GetSetAlder = 22;
-            nyKunde.GetSetVej = "Sofievej 2";
-            nyKunde.GetSetTelefon = "11223344";
-            nyKunde.GetSetEmail = "sofie@mail.dk";
-            nyKunde.GetSetPostNummer = "8000";
+            nyKunde.GetSetNavn = "Magnus";
+            nyKunde.GetSetAlder = 32;
+            nyKunde.GetSetVej = "Magnusvej 8";
+            nyKunde.GetSetTelefon = "77448899";
+            nyKunde.GetSetEmail = "Magnus@email.dk";
+            nyKunde.GetSetPostNummer = "8700";
             Console.WriteLine(nyKunde.Insert());
         }
         static void OpretPostnummer()
