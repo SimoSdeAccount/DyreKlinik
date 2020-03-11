@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Art.cs" />
+    <Compile Include="ArtDyr.cs" />
     <Compile Include="Behandling.cs" />
     <Compile Include="BehandlingBehandlingstype.cs" />
     <Compile Include="BehandlingsHistorik.cs" />
